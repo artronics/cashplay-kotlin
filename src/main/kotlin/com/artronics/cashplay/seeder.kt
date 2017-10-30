@@ -11,13 +11,15 @@ import java.util.*
 @Component
 class Seeder(
         private val userRepository: UserRepository,
-        private val authorityRepository: AuthorityRepository
+        private val authorityRepository: AuthorityRepository,
+        private val customerRepository: CustomerRepository
 
 ): ApplicationRunner {
     val cal = Calendar.getInstance()
 
     override fun run(p0: ApplicationArguments?) {
         createUsers()
+        createCustomers()
     }
 
     fun createUsers(){
@@ -53,5 +55,20 @@ class Seeder(
 
         userRepository.save(jalal)
         userRepository.save(reza)
+    }
+
+    fun createCustomers() {
+        val c1 = Customer(
+                firstName = "Ali",
+                lastName = "Moghadasian"
+        )
+        val c2 = Customer(
+                firstName = "Akram",
+                lastName = "Sabzalipour"
+        )
+
+        val customers = listOf<Customer>(c1, c2)
+
+        customerRepository.save(customers)
     }
 }

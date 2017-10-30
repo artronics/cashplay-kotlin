@@ -15,6 +15,7 @@ import javax.validation.constraints.Size
 @Entity
 @Table(name = "`user`")
 data class User(
+        @JsonIgnore
         @ManyToMany(fetch = FetchType.EAGER)
         @JoinTable(
                 name = "user_authorities",

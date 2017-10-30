@@ -44,8 +44,9 @@ class AuthenticationController(
         SecurityContextHolder.getContext().authentication = authentication
         val userDetails = userDetailsService.loadUserByUsername(jwtAuthenticationRequest.username)
         val token = jwtTokenUtil.generateToken(userDetails)
+        val user: User = userRepository.findByUsername(jwtAuthenticationRequest.username!!)!!
 
-        return ResponseEntity.ok(JwtAuthenticationResponse(token))
+        return ResponseEntity.ok(JwtAuthenticationResponse(token, user))
     }
 
     @PostMapping(value = "\${jwt.route.authentication.path}/register")
@@ -69,4 +70,4 @@ class AuthenticationController(
 }
 
 data class JwtAuthenticationRequest(var username: String? = null, var password: String? = null)
-data class JwtAuthenticationResponse(val token: String)
+data class JwtAuthenticationResponse(val token: String, val user: User)

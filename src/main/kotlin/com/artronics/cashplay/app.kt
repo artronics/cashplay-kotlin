@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse
 class Application
 
 fun main(args: Array<String>) {
+    println("kir")
     SpringApplication.run(Application::class.java, *args)
 }
 

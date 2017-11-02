@@ -14,16 +14,16 @@ jwt:
 
 spring:
   jpa:
-#    database: MYSQL
+    database: MYSQL
 #    database: POSTGRESQL
     hibernate:
       ddl-auto: create-drop
   datasource:
-#    url: jdbc:mysql://localhost:3306/cashplay?autoReconnect=true&useSSL=false
-    url: jdbc:postgresql://localhost:5432/cashplay?user=postgres&password=4117084
-    driverClassName: org.postgresql.Driver
-#    username: root
-#    password: 6220617
+    url: jdbc:mysql://172.17.0.2:3306/cashplay?autoReconnect=true&useSSL=false
+#    url: jdbc:postgresql://localhost:5432/cashplay?user=postgres&password=4117084
+#    driverClassName: org.postgresql.Driver
+    username: jalal
+    password: ${MYSQL_ROOT_PASSWORD}
 
 spring.jackson.serialization.INDENT_OUTPUT: true
 

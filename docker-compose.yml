@@ -1,0 +1,21 @@
+version: '3'
+services:
+  cashplay-mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=C5cme4etXH8F
+      - MYSQL_DATABASE=cashplay
+      - MYSQL_USER=jalal
+      - MYSQL_PASSWORD=C5cme4etXH8F
+  cashplay:
+    image: com.artronics.cashplay/cashplay:0.1.0
+    depends_on:
+      - cashplay-mysql
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=cashplay-mysql
+      - DATABASE_USER=jalal
+      - DATABASE_PASSWORD=C5cme4etXH8F
+      - DATABASE_NAME=cashplay
+      - DATABASE_PORT=3306

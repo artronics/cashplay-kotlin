@@ -22,8 +22,8 @@ spring:
     url: jdbc:mysql://172.17.0.2:3306/cashplay?autoReconnect=true&useSSL=false
 #    url: jdbc:postgresql://localhost:5432/cashplay?user=postgres&password=4117084
 #    driverClassName: org.postgresql.Driver
-    username: jalal
-    password: ${MYSQL_ROOT_PASSWORD}
+    username: ${MYSQL_CASHPLAY_USER}
+    password: ${MYSQL_CASHPLAY_PASSWORD}
 
 spring.jackson.serialization.INDENT_OUTPUT: true
 

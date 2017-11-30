@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -42,6 +43,12 @@ open class WebSecurityConfig(
 
     @Bean
     open fun authenticationTokenFilterBean() = JwtAuthenticationTokenFilter()
+
+    override fun configure(web: WebSecurity) {
+        super.configure(web)
+        // This allow for OPTION to pass prevents: Response for preflight has invalid HTTP status code 401
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**")
+    }
 
     override fun configure(http: HttpSecurity?) {
         http!!

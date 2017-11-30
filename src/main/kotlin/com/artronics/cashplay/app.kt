@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse
 class Application
 
 fun main(args: Array<String>) {
-    println("kir")
     SpringApplication.run(Application::class.java, *args)
 }
 
@@ -27,7 +26,7 @@ class SimpleCorsFilter : Filter {
             setHeader("Access-Control-Allow-Credentials", "true")
             setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH")
             setHeader("Access-Control-Max-Age", "3600")
-            setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Methods, GET,PUT,POST,DELETE,PATCH,OPTIONS, Origin,Authorization, X-Requested-With, Content-Type, Accept")
+            setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, GET,PUT,POST,DELETE,PATCH,OPTIONS, Origin,Accept, X-Requested-With, Authorization, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
         }
 
         filterChain?.doFilter(req, res)
